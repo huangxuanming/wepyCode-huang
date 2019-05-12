@@ -1,0 +1,22 @@
+<template>
+  <div class="page__hd">
+    <hi class="page__title">已选课程</hi>
+  </div>
+  <div class="page__bd">
+    <navigator url="./courseContent" class="yourCourseNav">
+      <view class="yourCourse">
+        高级Web
+      </view>
+    </navigator>
+  </div>
+</template>
+
+<style lang="less">
+  .yourCourse {
+    height: 100px;
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557568186123&di=7ed6106f13f403a6380cf4d4201143d1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01fda45767b6a00000012e7eb03eb7.jpg%401280w_1l_2o_100sh.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+  }
+</style>

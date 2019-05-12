@@ -1,0 +1,179 @@
+<style type="less">
+  .index {
+    .weui-flex {
+      align-items: center;
+    }
+
+    .weui-cells {
+      margin-top: 0;
+      opacity: 0;
+      transform: translateY(-50%);
+      transition: .3s;
+
+      &:before, &:after {
+        display: none;
+      }
+
+      &_show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .weui-cell {
+      &:before {
+        right: 15px;
+      }
+    }
+
+    .kind-list {
+    }
+
+    .kind-list__item {
+      margin: 10px 0;
+      background-color: #FFFFFF;
+      border-radius: 2px;
+      overflow: hidden;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .kind-list__img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .kind-list__item-hd {
+      padding: 20px;
+      transition: opacity .3s;
+
+      &_show {
+        opacity: .4;
+      }
+    }
+
+    .kind-list__item-bd {
+      height: 0;
+      overflow: hidden;
+    }
+
+    .userinfo {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .userinfo-avatar {
+      align-items: center;
+      overflow: hidden;
+      display: block;
+      width: 160 rpx;
+      height: 160 rpx;
+      margin: 20 rpx;
+      margin-top: 50 rpx;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .userinfo {
+      /* color: #fff; */
+      font-size: 14px;
+      border-radius: 40%;
+    }
+  }
+</style>
+<template>
+  <view class="index page">
+    <view class="page__hd">
+      <view class="userinfo">
+        <view class="userinfo-avatar">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <open-data type="userNickName"></open-data>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" class="page__bd page__bd_spacing">
+      <view class="kind-list">
+        <repeat for="{{list}}" key="id">
+          <view class="kind-list__item">
+            <view id="{{item.id}}" class="weui-flex kind-list__item-hd">
+              <view class="weui-flex__item">{{item.id}}</view>
+              <input class="weui-flex__item" placeholder="{{item.name}}"/>
+            </view>
+          </view>
+        </repeat>
+      </view>
+      <button formtype="submit" class='weui-btn-area'>提交修改</button>
+    </form>
+    <view class="page__ft">
+      <l>Designed By 辉锋炫杰</l>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '个人信息'
+    }
+    data = {
+      list: [
+        {
+          id: '姓名',
+          name: '请填写'
+        },
+        {
+          id: '学号',
+          name: '请填写'
+        },
+        {
+          id: '学校',
+          name: '请填写'
+        },
+        {
+          id: '专业',
+          name: '请填写'
+        },
+        {
+          id: '年级',
+          name: '请填写'
+        }
+        // {
+        //   id: '已订阅课程',
+        //   name: '5'
+        // }
+      ],
+      user: {
+        userinfo: null
+      }
+    }
+
+    submit(e) {
+      console.log(e.detail.value)
+      let that = this
+      that.list[0].name = 'xx'
+      that.list[1].name = '163020100xx'
+      that.list[2].name = '复旦大学'
+      that.list[3].name = '软件工程'
+      that.list[4].name = '大三'
+      console.log(that.list)
+    }
+
+    // 这里用self标识当前页面内容，更新全局变量
+    onLoad() {
+      // let self = this
+      // this.$parent.getUserInfo(function (userInfo) {
+      //   if (userInfo) {
+      //     self.userInfo = userInfo
+      //   }
+      //   self.$apply()
+      // })
+    }
+  }
+</script>

@@ -1,0 +1,84 @@
+<template>
+  <div class="page__hd">
+    <h1 class="page__title">高级Web</h1>
+  </div>
+  <div class="page__bd">
+    <!--<div class="weui-slider-box">-->
+      <!--<div class="weui-slider">-->
+        <!--<div id="sliderInner" class="weui-slider__inner">-->
+          <!--<div id="sliderTrack" style="width: 50%;" class="weui-slider__track"></div>-->
+          <!--<div id="sliderHandler" style="left: 50%;" class="weui-slider__handler"></div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <repeat for="{{chapter}}">
+      <view class="weui-panel">
+        <h1 class="weui-cells__title" style="color: red">{{item.name}}</h1>
+        <view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_small-appmsg">
+            <repeat for="{{item.section}}">
+              <view class="weui-cells">
+                <view class="weui-cell__hd"><img src="/images/toolbar/earth.png" alt="" style="width:20px;margin-right:16px;display:block"></view>
+                <view class="weui-cell__bd weui-cell_primary">
+                  <navigator url="./dialogueLearning?section_name={{item}}"  hover-class="navigator-hover">
+                    <h3 @tap="clickSection({item})">{{item}}</h3>
+                  </navigator>
+                </view>
+              </view>
+            </repeat>
+          </view>
+        </view>
+      </view>
+    </repeat>
+  </div>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '高级web学习'
+    }
+    data = {
+      chapter: [
+        {
+          name: '课程简介',
+          section: [
+            '课程信息',
+            '课程教与学特色'
+          ]
+        },
+        {
+          name: 'JavaEE',
+          section: [
+            'JavaEE&Servlet',
+            'JSP+javaBean',
+            'jdbc',
+            'MVC框架'
+          ]
+        },
+        {
+          name: 'web核心协议与架构',
+          section: [
+            'web核心概念和协议',
+            'web架构演变',
+            'web与云计算'
+          ]
+        }
+      ],
+      imgUrls: [
+        '../images/course/1.png',
+        '../images/course/2.png',
+        '../images/course/3.png',
+        '../images/course/4.png'
+      ]
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>
+
+<style>
+
+</style>

@@ -1,0 +1,110 @@
+<style lang="less">
+</style>
+
+<template>
+  <div class="page__hd">
+    <h1 class="page__title">课程</h1>
+    <swiper indicator-dots=true>
+      <repeat for="{{imgUrls}}">
+        <swiper-item @tap="swiperClick">
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </repeat>
+    </swiper>
+  </div>
+
+  <div class="page__bd">
+    <!--<view class="weui-tab">-->
+      <!--<view class="weui-navbar">-->
+        <!--<view class="weui-navbar__item">-->
+          <!--计算机-->
+        <!--</view>-->
+        <!--<view class="weui-navbar__item">-->
+          <!--数学-->
+        <!--</view>-->
+        <!--<view class="weui-navbar__  数学">-->
+          <!--扩展-->
+        <!--</view>-->
+      <!--</view>-->
+    <!--</view>-->
+    <view class="weui-panel weui-panel_access">
+      <h2 class="title">所有课程</h2>
+      <view class="weui-panel__bd">
+        <repeat for="{{list}}" key="courseId">
+          <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"
+                @tap="navigatorClick({item})">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="../images/course/{{item.courseId}}.png"></image>
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.teacher}}</view>
+              <view class="weui-media-box__desc">{{item.courseName}}</view>
+            </view>
+          </view>
+        </repeat>
+      </view>
+    </view>
+  </div>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '天天课堂'
+    }
+    data = {
+      list: [
+        {
+          courseId: '1',
+          teacher: 'Tom',
+          courseName: 'PE'
+        },
+        {
+          courseId: '2',
+          teacher: 'Summer',
+          courseName: 'English'
+        },
+        {
+          courseId: '3',
+          teacher: 'Ben',
+          courseName: 'Computer'
+        },
+        {
+          courseId: '4',
+          teacher: 'Lei',
+          courseName: 'Chinese Culture'
+        },
+        {
+          courseId: '5',
+          teacher: 'Zoe',
+          courseName: 'JavaScript'
+        }
+      ],
+      imgUrls: [
+        '../images/course/1.png',
+        '../images/course/2.png',
+        '../images/course/3.png',
+        '../images/course/4.png'
+      ]
+    }
+    methods = {
+      navigatorClick(courseItem) {
+        this.$parent.globalData.currentCourse.teacher = courseItem.teacher
+        this.$parent.globalData.currentCourse.courseName = courseItem.courseName
+        this.$parent.globalData.currentCourse.courseId = courseItem.courseId
+        wepy.navigateTo({
+          url: 'courseDetails'
+        })
+      },
+      swiperClick() {
+        wepy.navigateTo({
+          url: 'courseDetails'
+        })
+      }
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

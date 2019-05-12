@@ -1,0 +1,27 @@
+<template>
+  <view class="page__hd">
+    <view>我的日记</view>
+  </view>
+  <view class="page__bd">
+    <repeat for="{{diary}}">
+      <view>{{item}}</view>
+    </repeat>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的日记'
+    }
+    data = {
+      diary: [
+        '高级web的PJ真的难写呀呜呜呜'
+      ]
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

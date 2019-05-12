@@ -1,0 +1,42 @@
+<template>
+  <view class="page__hd">
+    <view style="color: #586C94">广场</view>
+  </view>
+  <view class="page__bd">
+    <navigator url="./publishDiary">
+      <p style="color: #0BB20C">发布日记</p>
+    </navigator>
+    <view style="margin-top: 10px">
+      <repeat for="{{diary}}">
+        <view style="margin-top: 5px">{{item}}</view>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '日记广场'
+    }
+    data = {
+      diary: [
+        '今天学习很开心，继续努力',
+        '高级web的PJ真的难写呀呜呜呜',
+        '失恋了，今天不想学习。。。。'
+      ]
+    }
+    // method = {
+    //   publishDiary() {
+    //     console.log('publish')
+    //     wepy.navigateTo({
+    //       url: './publishDiary'
+    //     })
+    //   }
+    // }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

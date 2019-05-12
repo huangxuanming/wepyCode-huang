@@ -1,0 +1,14 @@
+<template>
+  <div>
+    <view>群聊</view>
+  </div>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的圈子'
+    }
+  }
+</script>
